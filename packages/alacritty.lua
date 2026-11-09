@@ -28,7 +28,7 @@ return {
     install   = function(ctx, opts)
         ctx.shim("alacritty.exe")
         -- if opts.shortcuts then
-        --     ctx.create_shortcut()
+        ctx.shortcut("Alacritty", "alacritty.exe")
         -- end
     end
 }
