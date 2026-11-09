@@ -6,20 +6,18 @@ return {
     artifacts = {
         alacritty = {
             url = ("https://github.com/alacritty/alacritty/releases/download/v%s/Alacritty-v%s-portable.exe"):format(
-            package_version, package_version),
+                package_version, package_version),
             hash = "5ad70ddc5c2a2bfe84084a2c4c73558e9360914f035a902d7a69277be7249f1f",
             as = "alacritty.exe"
         }
     },
 
     options   = {
-        shortcuts = {
-            type = "bool",
+        shortcut = {
             default = true,
             desc = "Create a Start Menu shortcut",
         },
         working_directory = {
-            type = "string",
             default = "%USERPROFILE%",
             desc = "Directory the shortcut starts Alacritty in",
         },
@@ -27,8 +25,8 @@ return {
 
     install   = function(ctx, opts)
         ctx.shim("alacritty.exe")
-        -- if opts.shortcuts then
-        ctx.shortcut("Alacritty", "alacritty.exe")
-        -- end
+        if opts.shortcut then
+            ctx.shortcut("Alacritty", "alacritty.exe")
+        end
     end
 }
